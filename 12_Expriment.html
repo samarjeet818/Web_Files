@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<body>
+    <h2>Loops and Conditions Demo</h2>
+    <button onclick="runDemo()">Run Demo</button>
+    <div id="outputPanel" style="border: 1px solid black; padding: 10px; margin-top: 10px;"></div>
+
+    <script>
+        function runDemo() {
+            var display = document.getElementById('outputPanel');
+            var content = ""; // String to hold our HTML content
+
+            // 1. Conditional Statement (if/else)
+            var hour = 15; // Let's assume it's 3 PM
+            content = content + "<b>Condition Test:</b> ";
+            if (hour < 12) {
+                content = content + "Good Morning<br>";
+            } else {
+                content = content + "Good Afternoon<br>";
+            }
+
+            // 2. For Loop
+            content = content + "<br><b>For Loop (Count 1 to 3):</b> ";
+            for (var i = 1; i <= 3; i++) {
+                content = content + i + " ";
+            }
+
+            // 3. While Loop
+            content = content + "<br><b>While Loop (Count 3 to 1):</b> ";
+            var j = 3;
+            while (j >= 1) {
+                content = content + j + " ";
+                j--;
+            }
+
+            // 4. Do...While Loop
+            content = content + "<br><b>Do...While Loop (Runs at least once):</b> ";
+            var k = 0;
+            do {
+                content = content + "Done ";
+                k++;
+            } while (k < 0); // Condition is false, but runs once
+
+            // Updating DOM with innerHTML
+            display.innerHTML = content;
+        }
+    </script>
+</body>
+</html>

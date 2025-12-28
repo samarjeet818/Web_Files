@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<body>
+    <h2>Login Form Validation</h2>
+    
+    <!-- 'onsubmit' event handler handles the validation when button is clicked -->
+    <form onsubmit="return validateForm()">
+        
+        <label>Username (min 3 chars):</label><br>
+        <!-- 'oninput' triggers every time the user types -->
+        <input type="text" id="username" oninput="checkLiveInput()">
+        <span id="userMsg"></span>
+        <br><br>
+
+        <label>Password:</label><br>
+        <input type="password" id="password">
+        <br><br>
+
+        <input type="submit" value="Login">
+    </form>
+
+    <script>
+        // Live feedback using oninput
+        function checkLiveInput() {
+            // Using querySelector as per syllabus 3.4
+            var userField = document.querySelector('#username');
+            var msg = document.querySelector('#userMsg');
+
+            if (userField.value.length < 3) {
+                // Changing styles via JS
+                userField.style.borderColor = "red";
+                msg.innerText = " Too short!";
+                msg.style.color = "red";
+            } else {
+                userField.style.borderColor = "green";
+                msg.innerText = " Looks good";
+                msg.style.color = "green";
+            }
+        }
+
+        // Final validation on submit
+        function validateForm() {
+            var u = document.getElementById('username').value;
+            var p = document.getElementById('password').value;
+
+            if (u === "" || p === "") {
+                alert("Error: All fields are required!");
+                return false;  }
+             alert("Success: Form is valid and ready to submit.");
+            return true; }</script> </body> </html>

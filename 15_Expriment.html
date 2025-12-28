@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+    <!-- 
+      We will attach elements here using JavaScript. 
+      No IDs or innerHTML used, strictly following Unit 4.4.
+    -->
+
+    <script>
+        // 1. DYNAMIC DOM CREATION: createElement() & appendChild()
+        // Create the main container div
+        const container = document.createElement('div');
+        
+        // Create a button dynamically
+        const button = document.createElement('button');
+        button.textContent = "Add New Item";
+        
+        // Create a list (ul) dynamically
+        const list = document.createElement('ul');
+
+        // Append these elements to the document body
+        document.body.appendChild(container);
+        container.appendChild(button);
+        container.appendChild(list);
+
+        // 2. EVENT HANDLING: addEventListener
+        // When the button is clicked, create a new list item
+        button.addEventListener('click', () => {
+            
+            // Create a new 'li' element
+            const newItem = document.createElement('li');
+            newItem.textContent = "New Dynamic Item";
+            
+            // Add it to the list using appendChild()
+            list.appendChild(newItem);
+        });
+
+        // 3. EVENT DELEGATION & event.target
+        // Instead of adding an event to every single 'li', we add ONE to the parent 'ul'.
+        // This is the "Event delegation concept" from your syllabus.
+        list.addEventListener('click', (event) => {
+            
+            // Check if the actual clicked element (event.target) is an 'li'
+            if (event.target.tagName === 'LI') {
+                // Modify the clicked element directly
+                event.target.style.color = 'red';
+                event.target.style.textDecoration = 'line-through';
+            }}); </script></body></html>

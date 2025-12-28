@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<body>
+    <h2>Scope Demonstration (Check Console for details)</h2>
+    <button onclick="testScope()">Test Scope</button>
+    <p id="scopeResult"></p>
+
+    <script>
+        // Global Scope
+        var globalMessage = "I am Global";
+
+        function testScope() {
+            // Function Scope
+            var funcVar = "Accessible inside function";
+            
+            if (true) {
+                // Block Scope
+                var varVariable = "I am VAR (I leak out of blocks)";
+                let letVariable = "I am LET (I stay in block)";
+                const constVariable = "I am CONST (I stay in block)";
+                
+                console.log("Inside Block:");
+                console.log(letVariable);   // Works
+                console.log(constVariable); // Works
+            }
+
+            console.log("Outside Block:");
+            console.log(varVariable); // Works (var ignores block scope)
+            
+            // The following lines would cause errors if uncommented:
+            // console.log(letVariable); // Error: undefined
+            // console.log(constVariable); // Error: undefined
+
+            // Modifying content to show user
+            document.getElementById('scopeResult').innerText = 
+                "Check your browser console (F12) to see how Let and Const are hidden outside the if-block, while Var leaks out.";
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Arithmetic Operations</title>
+</head>
+<body>
+    <h2>Basic Arithmetic Calculator</h2>
+    <!-- Input fields -->
+    <input type="number" id="num1" placeholder="Enter first number">
+    <input type="number" id="num2" placeholder="Enter second number">
+    <br><br>
+
+    <!-- Buttons using onclick (Unit 3 style event handling) -->
+    <button onclick="calculate('add')">Add (+)</button>
+    <button onclick="calculate('sub')">Subtract (-)</button>
+    <button onclick="calculate('mul')">Multiply (*)</button>
+    <button onclick="calculate('div')">Divide (/)</button>
+
+    <!-- Output display -->
+    <h3 id="result">Result will appear here</h3>
+
+    <script>
+        function calculate(action) {
+            // Getting values using getElementById
+            var val1 = Number(document.getElementById('num1').value);
+            var val2 = Number(document.getElementById('num2').value);
+            var output = 0;
+
+            // Using switch case (Syllabus 3.2)
+            switch(action) {
+                case 'add':
+                    output = val1 + val2;
+                    break;
+                case 'sub':
+                    output = val1 - val2;
+                    break;
+                case 'mul':
+                    output = val1 * val2;
+                    break;
+                case 'div':
+                    if(val2 === 0) { // Basic validation
+                        alert("Cannot divide by zero");
+                        return;
+                    }
+                    output = val1 / val2;
+                    break;
+            }
+
+            // Displaying result using innerText (Syllabus 3.4)
+            document.getElementById('result').innerText = "Result: " + output;  } </script> </body> </html>
